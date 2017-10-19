@@ -13,6 +13,10 @@ class RosesTableViewController: UITableViewController {
     
     let roseImages = ["centennial.png", "doubleDelight.png", "gypsy.png", "johnFKennedy.png", "josephsCoat.png", "oklahoma.png", "queenElizabeth.png"]
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
