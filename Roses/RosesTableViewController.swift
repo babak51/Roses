@@ -77,7 +77,7 @@ class RosesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         // Create an option menu as an action sheet
-        let optionMenu = UIAlertController(title: nil, message: "Would you like to learn more about \(roseNames[indexPath.row])?", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
         
         // Add actions to the menu
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
@@ -91,12 +91,12 @@ class RosesTableViewController: UITableViewController {
             self.present(alertMessage, animated: true, completion: nil)
         }
         
-        let infoAction = UIAlertAction(title: "Yes, I like to learn more.", style: .default, handler: infoActionHandler)
+        let infoAction = UIAlertAction(title: "More about \(roseNames[indexPath.row])", style: .default, handler: infoActionHandler)
         optionMenu.addAction(infoAction)
         
         // Check-in action
         
-        let checkInAction = UIAlertAction(title: roseIsChecked[indexPath.row] ? "Remove Bookmark." : "Bookmark this rose.", style: .default, handler:
+        let checkInAction = UIAlertAction(title: roseIsChecked[indexPath.row] ? "Remove Bookmark" : "Bookmark this rose", style: .default, handler:
         {
             (action: UIAlertAction!) -> Void in
             let cell = tableView.cellForRow(at: indexPath)
