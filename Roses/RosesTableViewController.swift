@@ -13,6 +13,15 @@ class RosesTableViewController: UITableViewController {
     
     let roseImages = ["doubleDelight.png", "gypsy.png", "johnFKennedy.png", "josephsCoat.png", "oklahoma.png", "queenElizabeth.png", "scentimental.png"]
     
+    let roseColors = ["red and white colors", "a beautiful shade of red color", "white color with red dots", "red, white, and yellow colors", "dark red color", "pink color", "white with paterns of red color"]
+    
+    let roseTypes = ["Hybrid Tea", "Hybrid Tea", "Hybrid Tea", "Climbing Rose", "Hybrid Tea", "Hybrid Tea", "Hybrid Tea"]
+    
+    // need to change this array
+    let roseInfo = ["-Double Delight-", "-Gypsy-", "-John F. Kennedy-", "-Joseph's Coat-", "-Oklahoma-", "-Queen Elizabeth-", "-Scentimental-"]
+    
+    var roseIsChecked = Array(repeating: false, count: 7)
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -54,12 +63,60 @@ class RosesTableViewController: UITableViewController {
         cell.nameLabel.text = roseNames[indexPath.row]
         cell.thumbnailImageView.image = UIImage(named: roseImages[indexPath.row])
         
+        // The Circular Images:
         cell.thumbnailImageView.layer.cornerRadius = 40.0
         cell.thumbnailImageView.clipsToBounds = true
+        
+        // Colors:
+        cell.colorLabel.text = roseColors[indexPath.row]
+        cell.typeLabel.text = roseTypes[indexPath.row]
+        
         return cell
     }
  
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        // Create an option menu as an action sheet
+        let optionMenu = UIAlertController(title: nil, message: "Would you like to learn more about \(roseNames[indexPath.row])?", preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        // Add actions to the menu
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
+        optionMenu.addAction(cancelAction)
+        
+        // Add Info action
+        let infoActionHandler = {
+            (action: UIAlertAction!) -> Void in
+            let alertMessage = UIAlertController(title: self.roseNames[indexPath.row], message: self.roseInfo[indexPath.row], preferredStyle: UIAlertControllerStyle.alert)
+            alertMessage.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alertMessage, animated: true, completion: nil)
+        }
+        
+        let infoAction = UIAlertAction(title: "Yes, I like to learn more.", style: .default, handler: infoActionHandler)
+        optionMenu.addAction(infoAction)
+        
+        // Check-in action
+        
+        let checkInAction = UIAlertAction(title: roseIsChecked[indexPath.row] ? "Remove Bookmark." : "Bookmark this rose.", style: .default, handler:
+        {
+            (action: UIAlertAction!) -> Void in
+            let cell = tableView.cellForRow(at: indexPath)
+            self.roseIsChecked[indexPath.row] = !self.roseIsChecked[indexPath.row]
+            cell?.accessoryType = self.roseIsChecked[indexPath.row] ? .checkmark : .none
+        })
+        optionMenu.addAction(checkInAction)
+        
+        // Display the menu
+        present(optionMenu, animated: true, completion: nil)
+        
+        // deselect the row:
+        tableView.deselectRow(at: indexPath, animated: false)
+        
+        
+    }
+    
+    
+    
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
