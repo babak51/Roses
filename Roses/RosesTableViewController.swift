@@ -9,7 +9,9 @@
 import UIKit
 
 class RosesTableViewController: UITableViewController {
-    let roseNames = ["Double Delight", "Joseph's Coat", "Gypsy", "Queen Elizabeth", "John F. Kennedy", "Oklahoma", "Centennial"]
+    let roseNames = ["Centennial", "Double Delight", "Gypsy", "John F. Kennedy", "Joseph's Coat", "Oklahoma", "Queen Elizabeth"]
+    
+    let roseImages = ["centennial.png", "doubleDelight.png", "gypsy.png", "johnFKennedy.png", "josephsCoat.png", "oklahoma.png", "queenElizabeth.png"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +48,7 @@ class RosesTableViewController: UITableViewController {
         // Configure the cell...
 
         cell.textLabel?.text = roseNames[indexPath.row]
-        cell.imageView?.image = UIImage(named: "doubleDelight")
+        cell.imageView?.image = UIImage(named: roseImages[indexPath.row])
         return cell
     }
  
