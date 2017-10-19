@@ -53,6 +53,9 @@ class RosesTableViewController: UITableViewController {
 
         cell.nameLabel.text = roseNames[indexPath.row]
         cell.thumbnailImageView.image = UIImage(named: roseImages[indexPath.row])
+        
+        cell.thumbnailImageView.layer.cornerRadius = 40.0
+        cell.thumbnailImageView.clipsToBounds = true
         return cell
     }
  
