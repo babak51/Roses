@@ -9,9 +9,9 @@
 import UIKit
 
 class RosesTableViewController: UITableViewController {
-    let roseNames = ["Centennial", "Double Delight", "Gypsy", "John F. Kennedy", "Joseph's Coat", "Oklahoma", "Queen Elizabeth"]
+    let roseNames = ["Double Delight", "Gypsy", "John F. Kennedy", "Joseph's Coat", "Oklahoma", "Queen Elizabeth", "Scentimental"]
     
-    let roseImages = ["centennial.png", "doubleDelight.png", "gypsy.png", "johnFKennedy.png", "josephsCoat.png", "oklahoma.png", "queenElizabeth.png"]
+    let roseImages = ["doubleDelight.png", "gypsy.png", "johnFKennedy.png", "josephsCoat.png", "oklahoma.png", "queenElizabeth.png", "scentimental.png"]
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -47,12 +47,12 @@ class RosesTableViewController: UITableViewController {
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "Cell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! RoseTableViewCell
 
         // Configure the cell...
 
-        cell.textLabel?.text = roseNames[indexPath.row]
-        cell.imageView?.image = UIImage(named: roseImages[indexPath.row])
+        cell.nameLabel.text = roseNames[indexPath.row]
+        cell.thumbnailImageView.image = UIImage(named: roseImages[indexPath.row])
         return cell
     }
  
