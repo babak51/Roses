@@ -13,6 +13,7 @@
 		110D01E01F98082800CD4605 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 110D01DE1F98082800CD4605 /* LaunchScreen.storyboard */; };
 		110D01E81F98090600CD4605 /* RosesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110D01E71F98090600CD4605 /* RosesTableViewController.swift */; };
 		110D01EA1F984E2E00CD4605 /* RoseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110D01E91F984E2E00CD4605 /* RoseTableViewCell.swift */; };
+		114712BB1FA184030067941C /* Rose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114712BA1FA184030067941C /* Rose.swift */; };
 		11FE15B71FA04805009D6014 /* RosesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE15B61FA04805009D6014 /* RosesDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		110D01E11F98082800CD4605 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		110D01E71F98090600CD4605 /* RosesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosesTableViewController.swift; sourceTree = "<group>"; };
 		110D01E91F984E2E00CD4605 /* RoseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoseTableViewCell.swift; sourceTree = "<group>"; };
+		114712BA1FA184030067941C /* Rose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rose.swift; sourceTree = "<group>"; };
 		11FE15B61FA04805009D6014 /* RosesDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosesDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,6 +68,7 @@
 				110D01E71F98090600CD4605 /* RosesTableViewController.swift */,
 				110D01E91F984E2E00CD4605 /* RoseTableViewCell.swift */,
 				11FE15B61FA04805009D6014 /* RosesDetailViewController.swift */,
+				114712BA1FA184030067941C /* Rose.swift */,
 			);
 			path = Roses;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 				110D01EA1F984E2E00CD4605 /* RoseTableViewCell.swift in Sources */,
 				110D01E81F98090600CD4605 /* RosesTableViewController.swift in Sources */,
 				110D01D61F98082800CD4605 /* AppDelegate.swift in Sources */,
+				114712BB1FA184030067941C /* Rose.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
