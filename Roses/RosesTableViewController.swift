@@ -75,45 +75,45 @@ class RosesTableViewController: UITableViewController {
     }
  
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        // Create an option menu as an action sheet
-        let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
-        
-        // Add actions to the menu
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
-        optionMenu.addAction(cancelAction)
-        
-        // Add Info action
-        let infoActionHandler = {
-            (action: UIAlertAction!) -> Void in
-            let alertMessage = UIAlertController(title: self.roseNames[indexPath.row], message: self.roseInfo[indexPath.row], preferredStyle: UIAlertControllerStyle.alert)
-            alertMessage.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alertMessage, animated: true, completion: nil)
-        }
-        
-        let infoAction = UIAlertAction(title: "More about \(roseNames[indexPath.row])", style: .default, handler: infoActionHandler)
-        optionMenu.addAction(infoAction)
-        
-        // Check-in action
-        
-        let checkInAction = UIAlertAction(title: roseIsChecked[indexPath.row] ? "Remove Bookmark" : "Bookmark this rose", style: .default, handler:
-        {
-            (action: UIAlertAction!) -> Void in
-            let cell = tableView.cellForRow(at: indexPath)
-            self.roseIsChecked[indexPath.row] = !self.roseIsChecked[indexPath.row]
-            cell?.accessoryType = self.roseIsChecked[indexPath.row] ? .checkmark : .none
-        })
-        optionMenu.addAction(checkInAction)
-        
-        // Display the menu
-        present(optionMenu, animated: true, completion: nil)
-        
-        // deselect the row:
-        tableView.deselectRow(at: indexPath, animated: false)
-        
-        
-    }
-    
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+//        // Create an option menu as an action sheet
+//        let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+//
+//        // Add actions to the menu
+//        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
+//        optionMenu.addAction(cancelAction)
+//
+//        // Add Info action
+//        let infoActionHandler = {
+//            (action: UIAlertAction!) -> Void in
+//            let alertMessage = UIAlertController(title: self.roseNames[indexPath.row], message: self.roseInfo[indexPath.row], preferredStyle: UIAlertControllerStyle.alert)
+//            alertMessage.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//            self.present(alertMessage, animated: true, completion: nil)
+//        }
+//        
+//        let infoAction = UIAlertAction(title: "More about \(roseNames[indexPath.row])", style: .default, handler: infoActionHandler)
+//        optionMenu.addAction(infoAction)
+//
+//        // Check-in action
+//
+//        let checkInAction = UIAlertAction(title: roseIsChecked[indexPath.row] ? "Remove Bookmark" : "Bookmark this rose", style: .default, handler:
+//        {
+//            (action: UIAlertAction!) -> Void in
+//            let cell = tableView.cellForRow(at: indexPath)
+//            self.roseIsChecked[indexPath.row] = !self.roseIsChecked[indexPath.row]
+//            cell?.accessoryType = self.roseIsChecked[indexPath.row] ? .checkmark : .none
+//        })
+//        optionMenu.addAction(checkInAction)
+//
+//        // Display the menu
+//        present(optionMenu, animated: true, completion: nil)
+//
+//        // deselect the row:
+//        tableView.deselectRow(at: indexPath, animated: false)
+//
+//
+//    }
+//
     
     
     
@@ -152,14 +152,21 @@ class RosesTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "showRoseDetail" {
+            if let indexPath = tableView.indexPathForSelectedRow{
+                let destinationController = segue.destination as!RosesDetailViewController
+                destinationController.roseImage = roseImages[indexPath.row]
+            }
+        }
     }
-    */
+    
 
 }
